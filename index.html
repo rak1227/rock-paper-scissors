@@ -27,7 +27,7 @@
 
             let firstString = playerSelection.slice(0,1);
             let restString = playerSelection.slice(1);
-            playerSelection = firstString.toUpperCase() + restString;
+            playerSelection = firstString.toUpperCase() + restString.toLowerCase();
 
             if (playerSelection!="Rock" && playerSelection!="Paper" && playerSelection!="Scissors"){
                 return "Invalid Selection, try again";
@@ -68,8 +68,9 @@
         }
         }
 
-        console.log(roundGame(computerPlay(), "rock"));
-
+       let playerSelection = prompt("Enter your selection here: ");
+       
+       console.log(roundGame(computerPlay(), playerSelection));
 
     </script>
 </head>
