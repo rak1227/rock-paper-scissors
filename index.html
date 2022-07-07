@@ -6,15 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors Game!</title>
     <script>
-        function computerPlay(){
-            let randomizer = Math.floor(Math.random() * (3 - 1) + 1);
+        function computerPlay(computerSelection){
+            let randomizer = Math.ceil(Math.random() * (3));
 
-            for(let x = 0; x<10 ; x++)
+            if (randomizer==1){
+                return "Rock";
+            }
 
-            console.log(Math.ceil(Math.random() * (3)));
+            else if (randomizer==2){
+                return "Paper";
+            }
+
+            else {
+                return "Scissors";
+            }
+
         }
 
-        computerPlay();
+        console.log(computerPlay());
+
     </script>
 </head>
 <body>
