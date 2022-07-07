@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors Game!</title>
     <script>
-        function computerPlay(computerSelection){
+        function computerPlay(){
             let randomizer = Math.ceil(Math.random() * (3));
 
             if (randomizer==1){
@@ -23,7 +23,53 @@
 
         }
 
-        console.log(computerPlay());
+        function roundGame(computerSelection, playerSelection){
+
+            let firstString = playerSelection.slice(0,1);
+            let restString = playerSelection.slice(1);
+            playerSelection = firstString.toUpperCase() + restString;
+
+            if (playerSelection!="Rock" && playerSelection!="Paper" && playerSelection!="Scissors"){
+                return "Invalid Selection, try again";
+            }
+
+            else{
+
+            if (computerSelection == "Rock" && playerSelection == "Rock"){
+                return "It's a tie!"
+            }
+            else if (computerSelection == "Paper" && playerSelection == "Paper"){
+                return "It's a tie!"
+            }
+            else if (computerSelection == "Scissors" && playerSelection == "Scissors"){
+                return "It's a tie!"
+            }
+            else if (computerSelection == "Rock" && playerSelection == "Scissors"){
+                return "You lose! Rock beats Scissors"
+            }
+            else if (computerSelection == "Paper" && playerSelection == "Rock"){
+                return "You lose! Paper beats Rock"
+            }
+            else if (computerSelection == "Scissors" && playerSelection == "Paper"){
+                return "You lose! Scissors beats Paper"
+            }
+            else if (computerSelection == "Rock" && playerSelection == "Paper"){
+                return "You win! Paper beats Rock"
+            }
+            else if (computerSelection == "Paper" && playerSelection == "Scissors"){
+                return "You win! Scissors beats Paper"
+            }
+            else if (computerSelection == "Scissors" && playerSelection == "Rock"){
+                return "You win! Rock beats Scissors"
+            }
+            else{
+                return "Something went wrong! Perhaps input error";
+            }
+        }
+        }
+
+        console.log(roundGame(computerPlay(), "rock"));
+
 
     </script>
 </head>
