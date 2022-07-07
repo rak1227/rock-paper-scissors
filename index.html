@@ -24,10 +24,12 @@
         }
 
         function roundGame(computerSelection, playerSelection){
-
+           
             let firstString = playerSelection.slice(0,1);
             let restString = playerSelection.slice(1);
             playerSelection = firstString.toUpperCase() + restString.toLowerCase();
+
+
             if (playerSelection!="Rock" && playerSelection!="Paper" && playerSelection!="Scissors"){
                 return "Invalid Input selection, try again";
             }
@@ -77,14 +79,29 @@
             let playerScore = 0;
             let computerScore = 0;
             for(let i = 0; i < 5; i++){
+
                 let playerSelection = prompt("Enter your selection here: ");
                 let result = (roundGame(computerPlay(), playerSelection));
-                if (result == "You win! Paper beats Rock" || result == "You win! Scissors beats Paper" || result == "You win! Rock beats Scissors"){
-                    playerScore++;
+
+                // RECURSION FOR INVALID INPUT
+
+                while(result == "Invalid Input selection, try again"){
+
+                    playerSelection = prompt("You have entered an invalid input selection, please enter either Rock, Paper or Scissors as selection: ");
+                    result = (roundGame(computerPlay(), playerSelection));
+
                 }
-                else if (result != "It's a tie!" && result != "Invalid Input selection, try again"){
-                    computerScore++;
-                }
+
+           
+                    if (result == "You win! Paper beats Rock" || result == "You win! Scissors beats Paper" || result == "You win! Rock beats Scissors"){
+                        playerScore++;
+                    }
+                    else if (result != "It's a tie!" && result != "Invalid Input selection, try again"){
+                        computerScore++;
+                    }
+                    
+            
+
                 console.log(result);
                 console.log("Player Score for the round: " + playerScore);
                 console.log("Computer Score for the round: " + computerScore);
@@ -101,7 +118,6 @@
             else{
                 console.log("It's a tie!");
             }
-            
             
         }
        
